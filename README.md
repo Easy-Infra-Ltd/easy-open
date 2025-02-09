@@ -11,11 +11,11 @@ easyopen yourcmd yourparam1 ...
 # Install
 Download the latest package for your OS:
 ```
-wget https://github.com/Easy-Infra-Ltd/easy-open/releases/download/v0.0.1.1/easyopen-v0.0.1.1-linux-amd64.tar.gz
+wget https://github.com/Easy-Infra-Ltd/easy-open/releases/download/v0.0.1.2/easyopen-v0.0.1.2-linux-amd64.tar.gz
 ```
 Extract the files locally:
 ```
-tar -xzf easyopen-v0.0.1.1-linux-amd64.tar.gz
+tar -xzf easyopen-v0.0.1.2-linux-amd64.tar.gz
 ```
 Run the install script to get setup:
 ```
