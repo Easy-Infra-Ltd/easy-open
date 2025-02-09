@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-
+cp $(pwd)/easyopen /usr/local/bin
+rm -rf $(pwd)/easyopen $(pwd)/easyopen*.tar.gz $(pwd)/install
