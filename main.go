@@ -55,11 +55,34 @@ type Command struct {
 	Params []string `json:"params"`
 }
 
+func parseCommand(arg string, cmds []Command, params []string) string {
+	parsedCmd := arg
+	for _, cmd := range cmds {
+		if cmd.Name == parsedCmd {
+			parsedCmd = cmd.Url
+
+			if len(params) > 0 {
+				for i := 0; i < len(params); i++ {
+					parsedCmd = strings.Replace(parsedCmd, ":"+strconv.Itoa(i+1), url.QueryEscape(params[i]), -1)
+				}
+			} else {
+				parsedCmd = strings.Replace(parsedCmd, ":1", "", -1)
+			}
+		}
+	}
+
+	return parsedCmd
+}
+
+func usage() {
+	fmt.Printf("Usage: %s url|command [...params]\n", os.Args[0])
+}
+
 func main() {
-	// TODO: Parse arugments
 	args := os.Args
-	if len(args) < 1 {
-		panic(args)
+	if len(args) < 2 {
+		usage()
+		os.Exit(1)
 	}
 
 	arg := os.Args[1]
@@ -77,21 +100,7 @@ func main() {
 		panic(jErr)
 	}
 
-	parsedCmd := arg
-	for _, cmd := range cmds {
-		if cmd.Name == parsedCmd {
-			parsedCmd = cmd.Url
-
-			if len(params) > 0 {
-				for i := 0; i < len(params); i++ {
-					parsedCmd = strings.Replace(parsedCmd, ":"+strconv.Itoa(i+1), url.QueryEscape(params[i]), 1)
-				}
-			} else {
-				parsedCmd = strings.Replace(parsedCmd, ":1", "", 1)
-			}
-		}
-	}
-
+	parsedCmd := parseCommand(arg, cmds, params)
 	rawUri := "https://" + parsedCmd
 	_, uriErr := url.ParseRequestURI(rawUri)
 	if uriErr != nil {
@@ -101,5 +110,3 @@ func main() {
 	fmt.Printf("Opening Url: %s \n", rawUri)
 	openURL(rawUri)
 }
-
-// easyopen cticket
