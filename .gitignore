@@ -12,6 +12,8 @@
 !LICENSE
 !install
 
+!easyopen.cmds.json
+
 # !Makefile
 
 # ...even if they are in subdirectories

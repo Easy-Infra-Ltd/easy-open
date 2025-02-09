@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 cp $(pwd)/easyopen /usr/local/bin
-rm -rf $(pwd)/easyopen $(pwd)/easyopen*.tar.gz $(pwd)/install
+cp $(pwd)/easyopen.cmds.json $HOME/.config
+rm -rf $(pwd)/easyopen $(pwd)/easyopen*.tar.gz $(pwd)/install $(pwd)/easyopen.cmds.json
