@@ -2,4 +2,5 @@
 
 cp $(pwd)/easyopen /usr/local/bin
 cp $(pwd)/easyopen.cmds.json $HOME/.config
+chown $USER $HOME/.config/easyopen.cmds.json
 rm -rf $(pwd)/easyopen $(pwd)/easyopen*.tar.gz $(pwd)/install $(pwd)/easyopen.cmds.json
